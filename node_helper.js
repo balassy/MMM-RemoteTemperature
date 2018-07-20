@@ -1,17 +1,15 @@
-/* global Module, Log */
-
 const url = require('url');
-const NodeHelper = require('node_helper');
+const NodeHelper = require('node_helper'); // eslint-disable-line import/no-extraneous-dependencies
 
 module.exports = NodeHelper.create({
   start() {
-    console.log('-------------------- MMM-RemoteTemperature Node helper: Node helper started.');
     this._initHandler();
   },
 
   socketNotificationReceived(notificationName, payload) {
-    console.log('-------------------- MMM-RemoteTemperature Node helper: Notification received: ' + notificationName);
-    this.sendSocketNotification('REPLY', {});
+    if (notificationName === 'MMM-RemoteTemperature.INIT') {
+      console.log(`MMM-RemoteTemperature Node helper: Init notification received from module for sensor "${payload.sensorId}".`);
+    }
   },
 
   _initHandler() {
@@ -19,9 +17,14 @@ module.exports = NodeHelper.create({
   },
 
   _onTemperatureValueReceived(req, res) {
-    var query = url.parse(req.url, true).query;
-    var temp = query.temp;
-    this.sendSocketNotification('MMM-RemoteTemperature-Value-Received', { temp: temp });
-    res.send('OK');
+    const query = url.parse(req.url, true).query;
+
+    const payload = {
+      temp: query.temp,
+      sensorId: query.sensorId
+    };
+    this.sendSocketNotification('MMM-RemoteTemperature.VALUE_RECEIVED', payload);
+
+    res.sendStatus(200);
   }
 });

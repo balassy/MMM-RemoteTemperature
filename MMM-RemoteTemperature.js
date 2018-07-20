@@ -1,4 +1,4 @@
-/* global Module, Log */
+/* global Module */
 
 /* Magic Mirror Module: MMM-RemoteTemperature (https://github.com/balassy/MMM-RemoteTemperature)
  * By György Balássy (https://www.linkedin.com/in/balassy)
@@ -7,6 +7,7 @@
 
 Module.register('MMM-RemoteTemperature', {
   defaults: {
+    sensorId: null
   },
 
   requiresVersion: '2.1.0',
@@ -41,16 +42,20 @@ Module.register('MMM-RemoteTemperature', {
   },
 
   socketNotificationReceived(notificationName, payload) {
-    Log.info('-------------------- MMM-RemoteTemperature: Notification received: ' + notificationName);
-    const temp = payload.temp;
-    this.viewModel = {
-      temp: temp
-    };
+    if (notificationName === 'MMM-RemoteTemperature.VALUE_RECEIVED' && payload) {
+      if (!this.config.sensorId || (this.config.sensorId && this.config.sensorId === payload.sensorId)) {
+        this.viewModel = {
+          temp: payload.temp
+        };
 
-    this.updateDom();
+        this.updateDom();
+      }
+    }
   },
 
   _initCommunication() {
-    this.sendSocketNotification('CONNECT', null);
+    this.sendSocketNotification('MMM-RemoteTemperature.INIT', {
+      sensorId: this.config.sensorId
+    });
   }
 });

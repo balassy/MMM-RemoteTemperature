@@ -3,7 +3,10 @@
   "rules": {
     "comma-dangle": ["error", "never"],
     "linebreak-style": ["off"],
-    "no-underscore-dangle": ["off"]
+    "max-len": ["error", { "code": 300 }],
+    "no-console": ["off"],
+    "no-underscore-dangle": ["off"],
+    "prefer-destructuring": ["off"]
   },
 	"env": {
 		"browser": true,
