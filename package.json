@@ -1,0 +1,30 @@
+{
+  "name": "MMM-RemoteTemperature",
+  "version": "1.0.0",
+  "description": "MagicMirror module that displays temperature value from a remote sensor.",
+  "main": "MMM-RemoteTemperature.js",
+  "author": "György Balássy",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/balassy/MMM-RemoteTemperature"
+  },
+  "keywords": [
+    "MagicMirror",
+    "module",
+    "temperature"
+  ],
+  "devDependencies": {
+    "eslint": "^5.0.1",
+    "eslint-config-airbnb-base": "^13.0.0",
+    "eslint-plugin-import": "^2.13.0",
+    "grunt": "latest",
+    "grunt-eslint": "latest",
+    "grunt-jsonlint": "latest",
+    "grunt-markdownlint": "^1.0.13",
+    "grunt-stylelint": "latest",
+    "grunt-yamllint": "latest",
+    "stylelint-config-standard": "latest",
+    "time-grunt": "latest"
+  }
+}
