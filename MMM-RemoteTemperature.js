@@ -1,4 +1,4 @@
-/* global Module */
+/* global Module, Log */
 
 /* Magic Mirror Module: MMM-RemoteTemperature (https://github.com/balassy/MMM-RemoteTemperature)
  * By György Balássy (https://www.linkedin.com/in/balassy)
@@ -20,6 +20,7 @@ Module.register('MMM-RemoteTemperature', {
 
   start() {
     this.viewModel = null;
+    this._initCommunication();
   },
 
   getDom() {
@@ -27,7 +28,7 @@ Module.register('MMM-RemoteTemperature', {
 
     if (this.viewModel) {
       const tempEl = document.createElement('div');
-      tempEl.innerHTML = '25';
+      tempEl.innerHTML = this.viewModel.temp;
       wrapper.appendChild(tempEl);
     } else {
       const loadingEl = document.createElement('span');
@@ -37,5 +38,19 @@ Module.register('MMM-RemoteTemperature', {
     }
 
     return wrapper;
+  },
+
+  socketNotificationReceived(notificationName, payload) {
+    Log.info('-------------------- MMM-RemoteTemperature: Notification received: ' + notificationName);
+    const temp = payload.temp;
+    this.viewModel = {
+      temp: temp
+    };
+
+    this.updateDom();
+  },
+
+  _initCommunication() {
+    this.sendSocketNotification('CONNECT', null);
   }
 });
