@@ -1,4 +1,4 @@
-/* global Module */
+/* global Module, moment */
 
 /* Magic Mirror Module: MMM-RemoteTemperature (https://github.com/balassy/MMM-RemoteTemperature)
  * By György Balássy (https://www.linkedin.com/in/balassy)
@@ -7,10 +7,25 @@
 
 Module.register('MMM-RemoteTemperature', {
   defaults: {
-    sensorId: null
+    sensorId: null,
+    icon: 'tree',
+    showTime: true
   },
 
   requiresVersion: '2.1.0',
+
+  getScripts() {
+    return [
+      'moment.js'
+    ];
+  },
+
+  getStyles() {
+    return [
+      'MMM-RemoteTemperature.css',
+      'font-awesome.css'
+    ];
+  },
 
   getTranslations() {
     return {
@@ -28,9 +43,26 @@ Module.register('MMM-RemoteTemperature', {
     const wrapper = document.createElement('div');
 
     if (this.viewModel) {
-      const tempEl = document.createElement('div');
-      tempEl.innerHTML = this.viewModel.temp;
-      wrapper.appendChild(tempEl);
+      const firstLineEl = document.createElement('div');
+
+      if (this.config.icon) {
+        const iconEl = document.createElement('span');
+        iconEl.classList = `symbol fa fa-${this.config.icon}`;
+        firstLineEl.appendChild(iconEl);
+      }
+
+      const tempEl = document.createElement('span');
+      tempEl.innerHTML = `${this.viewModel.temp}&deg;`;
+      firstLineEl.appendChild(tempEl);
+
+      wrapper.appendChild(firstLineEl);
+
+      if (this.config.showTime) {
+        const secondLineEl = document.createElement('div');
+        secondLineEl.classList = 'dimmed small';
+        secondLineEl.innerHTML = `(${this._formatTimestamp(this.viewModel.timestamp)})`;
+        wrapper.appendChild(secondLineEl);
+      }
     } else {
       const loadingEl = document.createElement('span');
       loadingEl.innerHTML = this.translate('LOADING');
@@ -45,7 +77,8 @@ Module.register('MMM-RemoteTemperature', {
     if (notificationName === 'MMM-RemoteTemperature.VALUE_RECEIVED' && payload) {
       if (!this.config.sensorId || (this.config.sensorId && this.config.sensorId === payload.sensorId)) {
         this.viewModel = {
-          temp: payload.temp
+          temp: payload.temp,
+          timestamp: Date.now()
         };
 
         this.updateDom();
@@ -57,5 +90,9 @@ Module.register('MMM-RemoteTemperature', {
     this.sendSocketNotification('MMM-RemoteTemperature.INIT', {
       sensorId: this.config.sensorId
     });
+  },
+
+  _formatTimestamp(timestamp) {
+    return moment(timestamp).format('HH:mm');
   }
 });
