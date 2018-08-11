@@ -8,7 +8,7 @@
 Module.register('MMM-RemoteTemperature', {
   defaults: {
     sensorId: null,
-    icon: 'tree',
+    icon: 'home',
     showTime: true
   },
 
