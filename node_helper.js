@@ -1,4 +1,4 @@
-const url = require('url');
+const bodyParser = require('body-parser');
 const NodeHelper = require('node_helper'); // eslint-disable-line import/no-extraneous-dependencies
 
 module.exports = NodeHelper.create({
@@ -13,16 +13,18 @@ module.exports = NodeHelper.create({
   },
 
   _initHandler() {
-    this.expressApp.get('/remote-temperature', this._onTemperatureValueReceived.bind(this));
+    this.expressApp.use(bodyParser.json());
+    this.expressApp.post('/remote-temperature', this._onTemperatureValueReceived.bind(this));
   },
 
   _onTemperatureValueReceived(req, res) {
-    const query = url.parse(req.url, true).query;
+    const params = req.body;
 
     const payload = {
-      temp: query.temp,
-      sensorId: query.sensorId
+      temp: params.temp,
+      sensorId: params.sensorId
     };
+
     this.sendSocketNotification('MMM-RemoteTemperature.VALUE_RECEIVED', payload);
 
     res.sendStatus(200);
