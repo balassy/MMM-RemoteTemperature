@@ -10,15 +10,15 @@ By default this module displays the measured temperature, an icon and the time o
 
 You can configure the module to display a custom icon:
 
-![With custom icon](https://raw.githubusercontent.com/balassy/MMM-RemoteTemperature/master/doc/screenshot-custom-icon.png)
+![With custom icon](./doc/screenshot-custom-icon.png)
 
 If you wish, you can completely remove the icon:
 
-![Without icon](https://raw.githubusercontent.com/balassy/MMM-RemoteTemperature/master/doc/screenshot-no-icon.png)
+![Without icon](./doc/screenshot-no-icon.png)
 
 You can also hide the timestamp:
 
-![Without timestamp](https://raw.githubusercontent.com/balassy/MMM-RemoteTemperature/master/doc/screenshot-no-timestamp.png)
+![Without timestamp](./doc/screenshot-no-timestamp.png)
 
 This module is capable to display only a single temperature value. If you would like to see the value of more sensors on your mirror, add this module multiple times.
 
