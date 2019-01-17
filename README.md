@@ -130,4 +130,4 @@ Many thanks to [Michael Teeuw](https://github.com/MichMich) for creating and mai
 
 ## About the author
 
-This project is created and maintaned by [György Balássy](https://www.linkedin.com/in/balassy).
+This project is created and maintained by [György Balássy](https://www.linkedin.com/in/balassy).
