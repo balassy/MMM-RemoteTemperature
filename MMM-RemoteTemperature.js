@@ -23,7 +23,8 @@ Module.register('MMM-RemoteTemperature', {
   getStyles() {
     return [
       'MMM-RemoteTemperature.css',
-      'font-awesome.css'
+      'font-awesome.css',
+      'font-awesome5.css',
     ];
   },
 
