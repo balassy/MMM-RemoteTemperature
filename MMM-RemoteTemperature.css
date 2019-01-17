@@ -1,3 +1,9 @@
 .MMM-RemoteTemperature .symbol {
-  margin-right: 10px;
+  margin-right: 15px;
 }
+
+.MMM-RemoteTemperature .humidity {
+  display: inline-block;
+  margin-left: 10px;
+}
+

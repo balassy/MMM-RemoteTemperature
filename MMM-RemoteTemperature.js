@@ -56,6 +56,13 @@ Module.register('MMM-RemoteTemperature', {
       tempEl.innerHTML = `${this.viewModel.temp}&deg;`;
       firstLineEl.appendChild(tempEl);
 
+      if (this.viewModel.humidity) {
+        const humidityEl = document.createElement('span');
+        humidityEl.classList = "humidity";
+        humidityEl.innerHTML = `${this.viewModel.humidity}%`;
+        firstLineEl.appendChild(humidityEl);
+      }
+
       wrapper.appendChild(firstLineEl);
 
       if (this.config.showTime) {
@@ -79,6 +86,7 @@ Module.register('MMM-RemoteTemperature', {
       if (!this.config.sensorId || (this.config.sensorId && this.config.sensorId === payload.sensorId)) {
         this.viewModel = {
           temp: payload.temp,
+          humidity: payload.humidity,
           timestamp: Date.now()
         };
 

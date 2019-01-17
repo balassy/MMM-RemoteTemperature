@@ -1,12 +1,16 @@
 # MMM-RemoteTemperature
 
-This is a module for the [MagicMirror²](https://github.com/MichMich/MagicMirror/) to display temperature values from a remote sensor that is capable to POST the measured value through HTTP protocol.
+This is a module for the [MagicMirror²](https://github.com/MichMich/MagicMirror/) to display temperature and humidity values from a remote sensor that is capable to POST the measured values through HTTP protocol.
 
 ## Features
 
-By default this module displays the measured temperature, an icon and the time of the last update:
+By default this module displays the measured temperature, humidity, an icon and the time of the last update:
 
-![Default](https://raw.githubusercontent.com/balassy/MMM-RemoteTemperature/master/doc/screenshot-default.png)
+![Default](./doc/screenshot-with-humidity.png)
+
+If the sensor does not send humidity data, then only the temperature is displayed:
+
+![Default](./doc/screenshot-temp-only.png)
 
 You can configure the module to display a custom icon:
 
@@ -83,11 +87,14 @@ This module can work with any temperature sensor that is capable to periodically
 ```javascript
 {
   "temp": 27,
+  "humidity": 30.4,
   "sensorId": "1"
 }
 ```
 
-The `temp` property value must be a `number`, and must contain the measured temperature. It will be displayed on the mirror as is, without any conversion.
+The `temp` property value must be a `number`, and must contain the measured temperature. It will be displayed on the mirror as is, without any conversion, appended by the `°` symbol.
+
+The `humidity` property value is optional, but if specified, it must be a number, and must contain the measured humidity represented in percentage. It will be displayed on the mirror as is, without any conversion, appended by the `%` symbol.
 
 The `sensorId` property must be a `string`, and can contain any value, but it is important that it must match the `sensorId` specified for the module in the configuration. It is used to determine which module should display the value, if the module is added multiple times to the mirror. It can also be used as an API key to ensure that only authorized sensors can update the mirror.
 
