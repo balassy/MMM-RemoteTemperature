@@ -106,6 +106,15 @@ Currently this module supports English (`en`) and Hungarian (`hu`) languages. Th
 
 Want to see more languages? Please contribute!
 
+## Customizing the design
+
+You can customize the look and feel of the module via the following CSS classes (from version 1.2.0):
+
+- `symbol`: The style of the icon.
+- `temp`: The style of the temperature value.
+- `humidity`: The style of the humidity value (if specified and rendered).
+- `time`: The style for the timestamp (if configured to show).
+
 ## Contribution
 
 Although for operation this module does not depend on any other module, if you would like to contribute to the codebase, please use the preconfigured linters to analyze the source code before sending a pull request. To run the linters follow these steps:
