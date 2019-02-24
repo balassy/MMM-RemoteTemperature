@@ -24,7 +24,7 @@ Module.register('MMM-RemoteTemperature', {
     return [
       'MMM-RemoteTemperature.css',
       'font-awesome.css',
-      'font-awesome5.css',
+      'font-awesome5.css'
     ];
   },
 
@@ -53,14 +53,22 @@ Module.register('MMM-RemoteTemperature', {
       }
 
       const tempEl = document.createElement('span');
+      tempEl.classList = 'temp';
       tempEl.innerHTML = `${this.viewModel.temp}&deg;`;
       firstLineEl.appendChild(tempEl);
+
+      if (this.viewModel.humidity) {
+        const humidityEl = document.createElement('span');
+        humidityEl.classList = 'humidity';
+        humidityEl.innerHTML = `${this.viewModel.humidity}%`;
+        firstLineEl.appendChild(humidityEl);
+      }
 
       wrapper.appendChild(firstLineEl);
 
       if (this.config.showTime) {
         const secondLineEl = document.createElement('div');
-        secondLineEl.classList = 'dimmed small';
+        secondLineEl.classList = 'time dimmed small';
         secondLineEl.innerHTML = `(${this._formatTimestamp(this.viewModel.timestamp)})`;
         wrapper.appendChild(secondLineEl);
       }
@@ -79,6 +87,7 @@ Module.register('MMM-RemoteTemperature', {
       if (!this.config.sensorId || (this.config.sensorId && this.config.sensorId === payload.sensorId)) {
         this.viewModel = {
           temp: payload.temp,
+          humidity: payload.humidity,
           timestamp: Date.now()
         };
 

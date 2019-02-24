@@ -1,24 +1,28 @@
 # MMM-RemoteTemperature
 
-This is a module for the [MagicMirror²](https://github.com/MichMich/MagicMirror/) to display temperature values from a remote sensor that is capable to POST the measured value through HTTP protocol.
+This is a module for the [MagicMirror²](https://github.com/MichMich/MagicMirror/) to display temperature and humidity values from a remote sensor that is capable to POST the measured values through HTTP protocol.
 
 ## Features
 
-By default this module displays the measured temperature, an icon and the time of the last update:
+By default this module displays the measured temperature, humidity, an icon and the time of the last update:
 
-![Default](https://raw.githubusercontent.com/balassy/MMM-RemoteTemperature/master/doc/screenshot-default.png)
+![Default](./doc/screenshot-with-humidity.png)
+
+If the sensor does not send humidity data, then only the temperature is displayed:
+
+![Default](./doc/screenshot-temp-only.png)
 
 You can configure the module to display a custom icon:
 
-![With custom icon](https://raw.githubusercontent.com/balassy/MMM-RemoteTemperature/master/doc/screenshot-custom-icon.png)
+![With custom icon](./doc/screenshot-custom-icon.png)
 
 If you wish, you can completely remove the icon:
 
-![Without icon](https://raw.githubusercontent.com/balassy/MMM-RemoteTemperature/master/doc/screenshot-no-icon.png)
+![Without icon](./doc/screenshot-no-icon.png)
 
 You can also hide the timestamp:
 
-![Without timestamp](https://raw.githubusercontent.com/balassy/MMM-RemoteTemperature/master/doc/screenshot-no-timestamp.png)
+![Without timestamp](./doc/screenshot-no-timestamp.png)
 
 This module is capable to display only a single temperature value. If you would like to see the value of more sensors on your mirror, add this module multiple times.
 
@@ -83,20 +87,33 @@ This module can work with any temperature sensor that is capable to periodically
 ```javascript
 {
   "temp": 27,
+  "humidity": 30.4,
   "sensorId": "1"
 }
 ```
 
-The `temp` property value must be a `number`, and must contain the measured temperature. It will be displayed on the mirror as is, without any conversion.
+The `temp` property value must be a `number`, and must contain the measured temperature. It will be displayed on the mirror as is, without any conversion, appended by the `°` symbol.
+
+The `humidity` property value is optional, but if specified, it must be a number, and must contain the measured humidity represented in percentage. It will be displayed on the mirror as is, without any conversion, appended by the `%` symbol.
 
 The `sensorId` property must be a `string`, and can contain any value, but it is important that it must match the `sensorId` specified for the module in the configuration. It is used to determine which module should display the value, if the module is added multiple times to the mirror. It can also be used as an API key to ensure that only authorized sensors can update the mirror.
 
+Make sure that your sensor properly sets the `Content-Type` header in the HTTP request to `application/json`, otherwise the module will not be able to parse the request body.
 
 ## Localization
 
 Currently this module supports English (`en`) and Hungarian (`hu`) languages. The language can be specified in the global `language` setting in the `config.js` file.
 
 Want to see more languages? Please contribute!
+
+## Customizing the design
+
+You can customize the look and feel of the module via the following CSS classes (from version 1.2.0):
+
+- `symbol`: The style of the icon.
+- `temp`: The style of the temperature value.
+- `humidity`: The style of the humidity value (if specified and rendered).
+- `time`: The style for the timestamp (if configured to show).
 
 ## Contribution
 
@@ -130,4 +147,4 @@ Many thanks to [Michael Teeuw](https://github.com/MichMich) for creating and mai
 
 ## About the author
 
-This project is created and maintaned by [György Balássy](https://www.linkedin.com/in/balassy).
+This project is created and maintained by [György Balássy](https://www.linkedin.com/in/balassy).
