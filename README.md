@@ -106,14 +106,56 @@ Currently this module supports English (`en`) and Hungarian (`hu`) languages. Th
 
 Want to see more languages? Please contribute!
 
-## Customizing the design
+## Customization
 
-You can customize the look and feel of the module via the following CSS classes (from version 1.2.0):
+The module includes CSS classes for each of the elements in the display allowing you to have a high level of control over the appearance of the module. The classes are:
 
-- `symbol`: The style of the icon.
-- `temp`: The style of the temperature value.
-- `humidity`: The style of the humidity value (if specified and rendered).
-- `time`: The style for the timestamp (if configured to show).
+- `symbol`: icon (if used)
+- `temp`: temperature value
+- `humidity`: humidity value (if used)
+- `time`: last data update time (if used)
+
+If you want to adjust the size of various elements, one option is to use the `zoom` property. This allows you to enlarge/reduce multiple elements at the same time. For example, the following would reduce everything in the module by 75%:
+
+```css
+.MMM-RemoteTemperature {
+	zoom: 0.75;
+}
+```
+
+By using the `::after` selector you can also move elements onto separate lines. For example, the following would put the humidity on a separate line below the temperature:
+
+```css
+.MMM-RemoteTemperature .temp::after {
+	content: "\a";
+	white-space: pre;
+}
+```
+*NB: the timestamp is pushed down onto a separate line by default*
+
+Putting all of these formatting elements together, you can make a very compact layout if you want to stack the output from multiple sensors. For example:
+
+```css
+.MMM-RemoteTemperature {
+	zoom: 0.75;
+	line-height: 1em;
+	margin-bottom: 10px;
+}
+
+.MMM-RemoteTemperature .symbol,
+.MMM-RemoteTemperature .humidity,
+.MMM-RemoteTemperature .time {
+	zoom: 0.75;
+}
+
+.MMM-RemoteTemperature .temp::after {
+	content: "\a";
+	white-space: pre;
+}
+```
+creates this:
+
+![With custom icon](./doc/screenshot-compact-multi-sensor.png)
 
 ## Contribution
 
