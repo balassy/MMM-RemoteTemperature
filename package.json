@@ -24,6 +24,7 @@
     "grunt-jsonlint": "latest",
     "grunt-markdownlint": "^1.0.13",
     "grunt-stylelint": "^0.10.1",
+    "stylelint": "^9.10.1",
     "stylelint-config-standard": "latest",
     "time-grunt": "^2.0.0"
   },
