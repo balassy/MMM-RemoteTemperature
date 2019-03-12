@@ -119,7 +119,7 @@ If you want to adjust the size of various elements, one option is to use the `zo
 
 ```css
 .MMM-RemoteTemperature {
-	zoom: 0.75;
+  zoom: 0.75;
 }
 ```
 
@@ -127,8 +127,8 @@ By using the `::after` selector you can also move elements onto separate lines. 
 
 ```css
 .MMM-RemoteTemperature .temp::after {
-	content: "\a";
-	white-space: pre;
+  content: "\a";
+  white-space: pre;
 }
 ```
 *NB: the timestamp is pushed down onto a separate line by default*
@@ -137,20 +137,20 @@ Putting all of these formatting elements together, you can make a very compact l
 
 ```css
 .MMM-RemoteTemperature {
-	zoom: 0.75;
-	line-height: 1em;
-	margin-bottom: 10px;
+  zoom: 0.75;
+  line-height: 1em;
+  margin-bottom: 10px;
 }
 
 .MMM-RemoteTemperature .symbol,
 .MMM-RemoteTemperature .humidity,
 .MMM-RemoteTemperature .time {
-	zoom: 0.75;
+  zoom: 0.75;
 }
 
 .MMM-RemoteTemperature .temp::after {
-	content: "\a";
-	white-space: pre;
+  content: "\a";
+  white-space: pre;
 }
 ```
 creates this:
