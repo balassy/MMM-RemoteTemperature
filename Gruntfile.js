@@ -56,15 +56,11 @@ module.exports = function (grunt) {
         },
         src: ['README.md', 'CHANGELOG.md', 'LICENSE.txt']
       }
-    },
-    yamllint: {
-      all: ['.travis.yml']
     }
   });
   grunt.loadNpmTasks('grunt-eslint');
   grunt.loadNpmTasks('grunt-stylelint');
   grunt.loadNpmTasks('grunt-jsonlint');
-  grunt.loadNpmTasks('grunt-yamllint');
   grunt.loadNpmTasks('grunt-markdownlint');
-  grunt.registerTask('default', ['eslint', 'stylelint', 'jsonlint', 'markdownlint', 'yamllint']);
+  grunt.registerTask('default', ['eslint', 'stylelint', 'jsonlint', 'markdownlint']);
 };
