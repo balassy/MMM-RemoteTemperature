@@ -16,19 +16,19 @@
     "RaspberryPi"
   ],
   "devDependencies": {
-    "eslint": "^5.15.1",
+    "eslint": "^5.16.0",
     "eslint-config-airbnb-base": "^13.1.0",
-    "eslint-plugin-import": "^2.16.0",
-    "grunt": "latest",
-    "grunt-eslint": "latest",
-    "grunt-jsonlint": "latest",
+    "eslint-plugin-import": "^2.17.3",
+    "grunt": "^1.0.4",
+    "grunt-eslint": "^21.1.0",
+    "grunt-jsonlint": "^2.0.0",
     "grunt-markdownlint": "^1.0.13",
     "grunt-stylelint": "^0.10.1",
     "stylelint": "^9.10.1",
-    "stylelint-config-standard": "latest",
+    "stylelint-config-standard": "^18.3.0",
     "time-grunt": "^2.0.0"
   },
   "dependencies": {
-    "body-parser": "latest"
+    "body-parser": "^1.19.0"
   }
 }
