@@ -1,6 +1,6 @@
 # MMM-RemoteTemperature
 
-This is a module for the [MagicMirror²](https://github.com/MichMich/MagicMirror/) to display temperature and humidity values from a remote sensor that is capable to POST the measured values through HTTP protocol.
+This is a module for the [MagicMirror²](https://github.com/MichMich/MagicMirror/) to display temperature and humidity values from a remote sensor that is capable to POST the measured values through HTTP protocol. It is designed to be generic and tested to work together with the open-source [SolarTherm](https://github.com/balassy/solar-wifi-weather-station) sensor hardware.
 
 ## Features
 
@@ -99,6 +99,10 @@ The `humidity` property value is optional, but if specified, it must be a number
 The `sensorId` property must be a `string`, and can contain any value, but it is important that it must match the `sensorId` specified for the module in the configuration. It is used to determine which module should display the value, if the module is added multiple times to the mirror. It can also be used as an API key to ensure that only authorized sensors can update the mirror.
 
 Make sure that your sensor properly sets the `Content-Type` header in the HTTP request to `application/json`, otherwise the module will not be able to parse the request body.
+
+## Recommended hardware
+
+The recommended and tested hardware sensor for this module is [SolarTherm](https://github.com/balassy/solar-wifi-weather-station). Both the hardware and the software of SolarTherm is open-source, and can be built as a DIY project. SolarTherm has built-in support for this MMM-RemoteTemperature module, and can push measured data also to other popular services, like Blynk and ThingSpeak.
 
 ## Localization
 
