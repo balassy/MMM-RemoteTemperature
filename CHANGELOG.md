@@ -3,6 +3,10 @@
 All notable changes to this project is documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [1.2.3]
+
+This is a maintenance release to fix CVE-2019-10744. This change does not affect the functionality of the module.
+
 ## [1.2.2]
 
 This is a maintenance release that updates all dependencies to the latest version. These changes do not affect the functionality of the module.
