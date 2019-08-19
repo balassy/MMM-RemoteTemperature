@@ -32,19 +32,31 @@ For updates, please check the [CHANGELOG](https://github.com/balassy/MMM-RemoteT
 
 To use this module follow these steps:
 
-1. Clone this repository to the `modules` folder of your MagicMirror:
+1. Switch to the `modules` folder of your MagicMirror
+
+```bash
+cd ~/MagicMirror/modules/
+```
+
+2. Clone this repository to the `modules` folder
 
 ```bash
 git clone https://github.com/balassy/MMM-RemoteTemperature.git
 ```
 
-2. Install the 3rd party dependencies:
+3. Switch to the `MMM-RemoteTemperature` folder
+
+```bash
+cd ./MMM-RemoteTemperature/
+```
+
+4. Install the 3rd party dependencies
 
 ```bash
 npm install
 ```
 
-3. Add the following configuration block to the modules array in the `config/config.js` file:
+5. Add the following configuration block to the modules array in the `config/config.js` file:
 
 ```js
 var config = {
