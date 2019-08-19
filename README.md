@@ -1,6 +1,6 @@
 # MMM-RemoteTemperature
 
-This is a module for the [MagicMirror²](https://github.com/MichMich/MagicMirror/) to display temperature and humidity values from a remote sensor that is capable to POST the measured values through HTTP protocol.
+This is a module for the [MagicMirror²](https://github.com/MichMich/MagicMirror/) to display temperature and humidity values from a remote sensor that is capable to POST the measured values through HTTP protocol. It is designed to be generic and tested to work together with the open-source [SolarTherm](https://github.com/balassy/solar-wifi-weather-station) sensor hardware.
 
 ## Features
 
@@ -100,6 +100,10 @@ The `sensorId` property must be a `string`, and can contain any value, but it is
 
 Make sure that your sensor properly sets the `Content-Type` header in the HTTP request to `application/json`, otherwise the module will not be able to parse the request body.
 
+## Recommended hardware
+
+The recommended and tested hardware sensor for this module is [SolarTherm](https://github.com/balassy/solar-wifi-weather-station). Both the hardware and the software of SolarTherm is open-source, and can be built as a DIY project. SolarTherm has built-in support for this MMM-RemoteTemperature module, and can push measured data also to other popular services, like Blynk and ThingSpeak.
+
 ## Localization
 
 Currently this module supports English (`en`) and Hungarian (`hu`) languages. The language can be specified in the global `language` setting in the `config.js` file.
@@ -119,7 +123,7 @@ If you want to adjust the size of various elements, one option is to use the `zo
 
 ```css
 .MMM-RemoteTemperature {
-	zoom: 0.75;
+  zoom: 0.75;
 }
 ```
 
@@ -127,8 +131,8 @@ By using the `::after` selector you can also move elements onto separate lines. 
 
 ```css
 .MMM-RemoteTemperature .temp::after {
-	content: "\a";
-	white-space: pre;
+  content: "\a";
+  white-space: pre;
 }
 ```
 *NB: the timestamp is pushed down onto a separate line by default*
@@ -137,20 +141,20 @@ Putting all of these formatting elements together, you can make a very compact l
 
 ```css
 .MMM-RemoteTemperature {
-	zoom: 0.75;
-	line-height: 1em;
-	margin-bottom: 10px;
+  zoom: 0.75;
+  line-height: 1em;
+  margin-bottom: 10px;
 }
 
 .MMM-RemoteTemperature .symbol,
 .MMM-RemoteTemperature .humidity,
 .MMM-RemoteTemperature .time {
-	zoom: 0.75;
+  zoom: 0.75;
 }
 
 .MMM-RemoteTemperature .temp::after {
-	content: "\a";
-	white-space: pre;
+  content: "\a";
+  white-space: pre;
 }
 ```
 creates this:
