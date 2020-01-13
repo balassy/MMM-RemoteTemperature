@@ -6,6 +6,10 @@
   margin: 0;
 }
 
+.MMM-RemoteTemperature .tempalt {
+  margin: 0;
+}
+
 .MMM-RemoteTemperature .humidity {
   display: inline-block;
   margin-left: 10px;
