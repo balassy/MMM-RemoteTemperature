@@ -60,7 +60,7 @@ Module.register('MMM-RemoteTemperature', {
       if (this.viewModel.tempalt) {
         const tempaltEl = document.createElement('span');
         tempaltEl.classList = 'tempalt';
-        tempaltEl.innerHTML = `${this.viewModel.tempalt}%`;
+        tempaltEl.innerHTML = `${this.viewModel.tempalt}&deg;`;
         firstLineEl.appendChild(tempaltEl);
       }
 
