@@ -7,7 +7,8 @@
 }
 
 .MMM-RemoteTemperature .tempalt {
-  margin: 0;
+  display: inline-block;
+  margin-left: 10px;
 }
 
 .MMM-RemoteTemperature .humidity {
