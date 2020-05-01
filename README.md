@@ -130,8 +130,9 @@ Want to see more languages? Please contribute!
 The module includes CSS classes for each of the elements in the display allowing you to have a high level of control over the appearance of the module. The classes are:
 
 - `symbol`: icon (if used)
-- `temp`: temperature value
+- `temp`: temperature value (if used) 
 - `humidity`: humidity value (if used)
+- `battery`: battery load value (if used)
 - `time`: last data update time (if used)
 
 If you want to adjust the size of various elements, one option is to use the `zoom` property. This allows you to enlarge/reduce multiple elements at the same time. For example, the following would reduce everything in the module by 75%:
