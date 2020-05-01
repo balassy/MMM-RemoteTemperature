@@ -11,6 +11,11 @@
   margin-left: 10px;
 }
 
+.MMM-RemoteTemperature .battery {
+  display: inline-block;
+  margin-left: 10px;
+}
+
 .MMM-RemoteTemperature .time {
   margin: 0;
 }
