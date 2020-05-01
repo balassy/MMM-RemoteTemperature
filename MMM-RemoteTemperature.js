@@ -52,11 +52,13 @@ Module.register('MMM-RemoteTemperature', {
         firstLineEl.appendChild(iconEl);
       }
 
-      const tempEl = document.createElement('span');
-      tempEl.classList = 'temp';
-      tempEl.innerHTML = `${this.viewModel.temp}&deg;`;
-      firstLineEl.appendChild(tempEl);
-
+      if (this.viewModel.temp) {
+        const tempEl = document.createElement('span');
+        tempEl.classList = 'temp';
+        tempEl.innerHTML = `${this.viewModel.temp}&deg;`;
+        firstLineEl.appendChild(tempEl);
+      }
+      
       if (this.viewModel.humidity) {
         const humidityEl = document.createElement('span');
         humidityEl.classList = 'humidity';
