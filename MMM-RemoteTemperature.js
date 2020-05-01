@@ -66,8 +66,8 @@ Module.register('MMM-RemoteTemperature', {
       
       if (this.viewModel.battery) {
         const batteryEl = document.createElement('span');
-        humidityEl.classList = 'battery';
-        humidityEl.innerHTML = `${this.viewModel.battery}%`;
+        batteryEl.classList = 'battery';
+        batteryEl.innerHTML = `${this.viewModel.battery}%`;
         firstLineEl.appendChild(batteryEl);
       }
 
