@@ -63,6 +63,13 @@ Module.register('MMM-RemoteTemperature', {
         humidityEl.innerHTML = `${this.viewModel.humidity}%`;
         firstLineEl.appendChild(humidityEl);
       }
+      
+      if (this.viewModel.battery) {
+        const batteryEl = document.createElement('span');
+        humidityEl.classList = 'battery';
+        humidityEl.innerHTML = `${this.viewModel.battery}%`;
+        firstLineEl.appendChild(batteryEl);
+      }
 
       wrapper.appendChild(firstLineEl);
 
@@ -88,6 +95,7 @@ Module.register('MMM-RemoteTemperature', {
         this.viewModel = {
           temp: payload.temp,
           humidity: payload.humidity,
+          battery: payload.battery,
           timestamp: Date.now()
         };
 
