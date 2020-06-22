@@ -3,12 +3,20 @@
 }
 
 .MMM-RemoteTemperature .temp {
-  margin: 0;
+  display: inline-block;
+  margin-left: 0;
+  margin-right: 10px;
 }
 
 .MMM-RemoteTemperature .humidity {
   display: inline-block;
-  margin-left: 10px;
+  margin-left: 0;
+  margin-right: 10px;
+}
+
+.MMM-RemoteTemperature .battery {
+  display: inline-block;
+  margin-left: 0;
 }
 
 .MMM-RemoteTemperature .time {

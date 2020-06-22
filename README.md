@@ -100,13 +100,16 @@ This module can work with any temperature sensor that is capable to periodically
 {
   "temp": 27,
   "humidity": 30.4,
+  "battery": 100,
   "sensorId": "1"
 }
 ```
 
-The `temp` property value must be a `number`, and must contain the measured temperature. It will be displayed on the mirror as is, without any conversion, appended by the `°` symbol.
+The `temp` property value is optional, must be a `number`, and must contain the measured temperature. It will be displayed on the mirror as is, without any conversion, appended by the `°` symbol.
 
 The `humidity` property value is optional, but if specified, it must be a number, and must contain the measured humidity represented in percentage. It will be displayed on the mirror as is, without any conversion, appended by the `%` symbol.
+
+The `battery` property value is optional, but if specified, it must be a number, and must contain the measured battery load represented in percentage. It will be displayed on the mirror as is, without any conversion, appended by the `%` symbol.
 
 The `sensorId` property must be a `string`, and can contain any value, but it is important that it must match the `sensorId` specified for the module in the configuration. It is used to determine which module should display the value, if the module is added multiple times to the mirror. It can also be used as an API key to ensure that only authorized sensors can update the mirror.
 
@@ -127,8 +130,9 @@ Want to see more languages? Please contribute!
 The module includes CSS classes for each of the elements in the display allowing you to have a high level of control over the appearance of the module. The classes are:
 
 - `symbol`: icon (if used)
-- `temp`: temperature value
+- `temp`: temperature value (if used) 
 - `humidity`: humidity value (if used)
+- `battery`: battery load value (if used)
 - `time`: last data update time (if used)
 
 If you want to adjust the size of various elements, one option is to use the `zoom` property. This allows you to enlarge/reduce multiple elements at the same time. For example, the following would reduce everything in the module by 75%:
