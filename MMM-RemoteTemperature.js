@@ -9,7 +9,7 @@ Module.register('MMM-RemoteTemperature', {
   defaults: {
     sensorId: null,
     icon: 'home',
-    showTime: true
+    showMore: true
   },
 
   requiresVersion: '2.1.0',
@@ -52,10 +52,12 @@ Module.register('MMM-RemoteTemperature', {
         firstLineEl.appendChild(iconEl);
       }
 
-      const tempEl = document.createElement('span');
-      tempEl.classList = 'temp';
-      tempEl.innerHTML = `${this.viewModel.temp}&deg;`;
-      firstLineEl.appendChild(tempEl);
+      if (this.viewModel.temp) {
+        const tempEl = document.createElement('span');
+        tempEl.classList = 'temp';
+        tempEl.innerHTML = `${this.viewModel.temp}&deg;`;
+        firstLineEl.appendChild(tempEl);
+      }
 
       if (this.viewModel.humidity) {
         const humidityEl = document.createElement('span');
@@ -66,10 +68,15 @@ Module.register('MMM-RemoteTemperature', {
 
       wrapper.appendChild(firstLineEl);
 
-      if (this.config.showTime) {
+      if (this.config.showMore) {
         const secondLineEl = document.createElement('div');
-        secondLineEl.classList = 'time dimmed small';
-        secondLineEl.innerHTML = `(${this._formatTimestamp(this.viewModel.timestamp)})`;
+        secondLineEl.classList = 'more dimmed small';
+        secondLineEl.innerHTML = `<span class="fa fa-refresh"></span> ${this._formatTimestamp(this.viewModel.timestamp)}`;
+
+        if (this.viewModel.battery) {
+          secondLineEl.innerHTML += `<span class="fa fa-battery-half"></span> ${this.viewModel.battery}%`;
+        }
+
         wrapper.appendChild(secondLineEl);
       }
     } else {
@@ -88,6 +95,7 @@ Module.register('MMM-RemoteTemperature', {
         this.viewModel = {
           temp: payload.temp,
           humidity: payload.humidity,
+          battery: payload.battery,
           timestamp: Date.now()
         };
 

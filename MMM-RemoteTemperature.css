@@ -8,9 +8,14 @@
 
 .MMM-RemoteTemperature .humidity {
   display: inline-block;
-  margin-left: 10px;
+  margin-left: 15px;
 }
 
-.MMM-RemoteTemperature .time {
+.MMM-RemoteTemperature .more {
   margin: 0;
+}
+
+.MMM-RemoteTemperature .more .fa {
+  font-size: 16px;
+  margin-left: 15px;
 }
