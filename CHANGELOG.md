@@ -3,6 +3,11 @@
 All notable changes to this project is documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [2.0.0]
+
+- ADDED: Support to display the battery level as percentage in the second line. Special thanks to @hweigel for his contribution.
+- BREAKING CHANGE: The `showTime` configuration property is renamed to `showMore`, because the second line now can contain the battery level too.
+
 ## [1.2.3]
 
 This is a maintenance release to fix CVE-2019-10744. This change does not affect the functionality of the module.
