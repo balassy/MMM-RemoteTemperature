@@ -12,6 +12,11 @@ If the sensor sends battery level data, it can be displayed in the second line:
 
 ![Default](./doc/screenshot-with-battery.png)
 
+If your sensor can send more data then the module can display these arbitrary values in a new line:
+
+![Default](./doc/screenshot-ext-data.png)
+
+
 If the sensor does not send humidity data, then only the temperature is displayed:
 
 ![Default](./doc/screenshot-temp-only.png)
@@ -89,6 +94,7 @@ For security reasons the MagicMirror is *not* reachable externally, which also m
 | `sensorId` | **REQUIRED** An arbitrary value that determines from which sensor this module accepts updates. It can also be used as an API key to restrict access to your mirror.<br><br> **Type:** `string` <br>**Default value:** `null` (must be configured)
 | `icon`     | *Optional* Name of a [FontAwesome icon](https://fontawesome.com/icons?d=gallery) that is displayed before the temperature value. For example set to `'home'` to indicate that the mirror displays an indoor value or `'car'` if you show the temperature your car enjoys in the garage. You can set it to `null` to not display any symbol. <br><br> **Type:** `string` <br>**Default value:** `'home'`
 | `showMore` | *Optional* Determines whether a second line with additional data (e.g. timestamp of the last data update and battery level) should be displayed on the mirror. <br><br> **Type:** `boolean` <br>**Default value:** `true`
+| `ext`      | *Optional* Configuration of additional data fields to display. See the `Show more data` section on this page for more information.<br><br> **Type:** `Array` <br>**Default value:** `[]`
 
 ## How it works
 
@@ -118,6 +124,46 @@ The `battery` property value is optional, but if specified, it must be a number,
 The `sensorId` property must be a `string`, and can contain any value, but it is important that it must match the `sensorId` specified for the module in the configuration. It is used to determine which module should display the value, if the module is added multiple times to the mirror. It can also be used as an API key to ensure that only authorized sensors can update the mirror.
 
 Make sure that your sensor properly sets the `Content-Type` header in the HTTP request to `application/json`, otherwise the module will not be able to parse the request body.
+
+### Show more data
+
+If your sensor is capable to post additional data you can use this module to display these arbitrary values in a second data line.
+
+First, you have to specify the name and optionally the unit of the extensional data fields in the `ext` property of the module configuration. For example to display barometric pressure and wind speed:
+
+```js
+  config: {
+    sensorId: '1',
+    icon: 'home',
+    showMore: true,
+    ext: [
+      { name: 'pressure', unit: ' hPa' },
+      { name: 'windspeed', unit: ' km/h' }
+    ]
+  }
+```
+
+Then you have to program your sensor to specify the measured values in the `ext` object in the posted JSON:
+
+```javascript
+{
+  "temp": 27,
+  "humidity": 30.4,
+  "battery": 100,
+  "sensorId": "1",
+  "ext": {
+    "pressure": 1015,
+    "windspeed": 23
+  }
+}
+```
+
+Note that the names `pressure` and `windspeed` are completely arbitrary, you can choose any name you want, but it is important that the key name in the `ext` object in the POSTed data must match with the `name` value in the module configuration. The module ignores those data values that are sent by the sensor but not specified in the module configuration.
+
+The `unit` is an optional field in the configuration. If specified, it's string value will be appended to the measured value as a postfix.
+
+In this way you can specify as many extension fields as you want, they will be displayed in one line within the module.
+
 
 ## Recommended hardware
 

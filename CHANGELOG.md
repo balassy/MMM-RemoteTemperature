@@ -3,6 +3,10 @@
 All notable changes to this project is documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [2.1.0]
+
+Added support for arbitrary extension fields.
+
 ## [2.0.1]
 
 This is a maintenance release to modernize the development environment. There are no changes in the code of the module so these updates should not affect the functionality of the module.

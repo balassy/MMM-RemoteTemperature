@@ -24,7 +24,8 @@ module.exports = NodeHelper.create({
       temp: params.temp,
       humidity: params.humidity,
       battery: params.battery,
-      sensorId: params.sensorId
+      sensorId: params.sensorId,
+      ext: params.ext
     };
 
     this.sendSocketNotification('MMM-RemoteTemperature.VALUE_RECEIVED', payload);

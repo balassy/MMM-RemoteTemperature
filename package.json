@@ -1,6 +1,6 @@
 {
   "name": "MMM-RemoteTemperature",
-  "version": "2.0.1",
+  "version": "2.1.0",
   "description": "MagicMirror module that displays temperature value from a remote sensor.",
   "main": "MMM-RemoteTemperature.js",
   "author": "György Balássy",
