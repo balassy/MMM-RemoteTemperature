@@ -1,5 +1,5 @@
 const bodyParser = require('body-parser');
-const NodeHelper = require('node_helper'); // eslint-disable-line import/no-extraneous-dependencies
+const NodeHelper = require('node_helper'); // eslint-disable-line import/no-unresolved
 
 module.exports = NodeHelper.create({
   start() {
@@ -8,7 +8,7 @@ module.exports = NodeHelper.create({
 
   socketNotificationReceived(notificationName, payload) {
     if (notificationName === 'MMM-RemoteTemperature.INIT') {
-      console.log(`MMM-RemoteTemperature Node helper: Init notification received from module for sensor "${payload.sensorId}".`);
+      console.log(`MMM-RemoteTemperature Node helper: Init notification received from module for sensor "${payload.sensorId}".`); // eslint-disable-line no-console
     }
   },
 

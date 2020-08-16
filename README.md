@@ -183,7 +183,7 @@ creates this:
 
 ## Contribution
 
-Although for operation this module does not depend on any other module, if you would like to contribute to the codebase, please use the preconfigured linters to analyze the source code before sending a pull request. To run the linters follow these steps:
+If you would like to contribute to the codebase, please use the preconfigured linters to analyze the source code before sending a pull request. To run the linters follow these steps:
 
 1. Install developer dependencies:
 
@@ -191,16 +191,10 @@ Although for operation this module does not depend on any other module, if you w
 npm install
 ```
 
-2. Install Grunt:
+2. Run all linters:
 
 ```bash
-npm install -g grunt
-```
-
-3. Use Grunt to run all linters:
-
-```bash
-grunt
+npm run lint
 ```
 
 ## Got feedback?

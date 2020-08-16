@@ -3,6 +3,12 @@
 All notable changes to this project is documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [2.0.1]
+
+This is a maintenance release to modernize the development environment. There are no changes in the code of the module so these updates should not affect the functionality of the module.
+- Get rid of Grunt, use native npm scripts instead to run the linters.
+- Update all dependencies to the latest versions.
+
 ## [2.0.0]
 
 - ADDED: Support to display the battery level as percentage in the second line. Special thanks to @hweigel for his contribution.

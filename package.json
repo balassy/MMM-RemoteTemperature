@@ -1,10 +1,17 @@
 {
   "name": "MMM-RemoteTemperature",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "MagicMirror module that displays temperature value from a remote sensor.",
   "main": "MMM-RemoteTemperature.js",
   "author": "György Balássy",
   "license": "MIT",
+  "scripts": {
+    "lint": "npm run jsonlint & npm run eslint & npm run markdownlint & npm run stylelint",
+    "eslint": "eslint *.js",
+    "jsonlint": "jsonlint --quiet --comments translations && jsonlint --quiet --comments .eslintrc.json .markdownlint.json .stylelintrc.json package.json",
+    "markdownlint": "markdownlint *.md",
+    "stylelint": "stylelint **/*.css"
+  },
   "repository": {
     "type": "git",
     "url": "git://github.com/balassy/MMM-RemoteTemperature"
@@ -16,17 +23,13 @@
     "RaspberryPi"
   ],
   "devDependencies": {
-    "eslint": "^5.16.0",
-    "eslint-config-airbnb-base": "^13.1.0",
-    "eslint-plugin-import": "^2.17.3",
-    "grunt": "^1.0.4",
-    "grunt-eslint": "^21.1.0",
-    "grunt-jsonlint": "^2.0.0",
-    "grunt-markdownlint": "^1.0.13",
-    "grunt-stylelint": "^0.10.1",
-    "stylelint": "^9.10.1",
-    "stylelint-config-standard": "^18.3.0",
-    "time-grunt": "^2.0.0"
+    "@prantlf/jsonlint": "^10.2.0",
+    "eslint": "^7.7.0",
+    "eslint-config-airbnb-base": "^14.2.0",
+    "eslint-plugin-import": "^2.22.0",
+    "markdownlint-cli": "^0.23.2",
+    "stylelint": "^13.6.1",
+    "stylelint-config-standard": "^20.0.0"
   },
   "dependencies": {
     "body-parser": "^1.19.0"
