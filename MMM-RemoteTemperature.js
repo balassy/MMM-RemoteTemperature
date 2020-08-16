@@ -9,7 +9,8 @@ Module.register('MMM-RemoteTemperature', {
   defaults: {
     sensorId: null,
     icon: 'home',
-    showMore: true
+    showMore: true,
+    ext: []
   },
 
   requiresVersion: '2.1.0',
@@ -68,6 +69,19 @@ Module.register('MMM-RemoteTemperature', {
 
       wrapper.appendChild(firstLineEl);
 
+      if (this.viewModel.ext) {
+        const extLineEl = document.createElement('div');
+
+        this.viewModel.ext.forEach((extData) => {
+          const extEl = document.createElement('span');
+          extEl.innerHTML = `${extData.value}${extData.unit}`;
+          extEl.classList = 'ext';
+          extLineEl.appendChild(extEl);
+        });
+
+        wrapper.appendChild(extLineEl);
+      }
+
       if (this.config.showMore) {
         const secondLineEl = document.createElement('div');
         secondLineEl.classList = 'more dimmed small';
@@ -96,6 +110,7 @@ Module.register('MMM-RemoteTemperature', {
           temp: payload.temp,
           humidity: payload.humidity,
           battery: payload.battery,
+          ext: this._parseExtFields(payload.ext),
           timestamp: Date.now()
         };
 
@@ -112,5 +127,27 @@ Module.register('MMM-RemoteTemperature', {
 
   _formatTimestamp(timestamp) {
     return moment(timestamp).format('HH:mm');
+  },
+
+  _parseExtFields(extPayload) {
+    const parsedExtValues = [];
+
+    if (this.config.ext && extPayload) {
+      this.config.ext.forEach((extConfig) => {
+        const { name } = extConfig;
+        const value = extPayload[name];
+        const unit = extConfig.unit || '';
+
+        if (typeof value !== 'undefined') {
+          parsedExtValues.push({
+            name,
+            value,
+            unit
+          });
+        }
+      });
+    }
+
+    return parsedExtValues;
   }
 });
